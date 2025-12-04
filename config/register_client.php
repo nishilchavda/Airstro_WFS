@@ -27,8 +27,8 @@ try {
         exit;
     }
 
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $pdo->prepare('INSERT INTO users (name, email, password_hash) VALUES (?,?,?)');
+    $hash = $password;
+    $stmt = $pdo->prepare('INSERT INTO users (name, email, password) VALUES (?,?,?)');
     $stmt->execute([$name, $email, $hash]);
 
     $_SESSION['success'] = 'Account created. Please log in.';
